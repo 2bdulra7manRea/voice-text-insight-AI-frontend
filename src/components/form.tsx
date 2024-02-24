@@ -8,30 +8,29 @@ import { sendInputToModel } from "@/api";
 
 export function FormText() {
   const [text, setText] = useState<any>("");
-  const [keywords , setKeywords ] = useState<any[]>([])
+  const [keywords, setKeywords] = useState<any[]>([]);
   const [readonly, setReadOnly] = useState(false);
   const handleOnChangeText = async () => {
     setReadOnly(true);
-    setKeywords(['hello', 'egypt' ,'london'])
-    const words:any[] =[]
-    sendInputToModel(text).then((response:any)=>{
-        console.log(response)
-        response.forEach((obj:any)=>{
-            words.push(obj.word)            
-        })
-        setKeywords(words)
-    }).catch((error:any)=>{
-        console.log(error)
-    })
-
+    const words: any[] = [];
+    sendInputToModel(text)
+      .then((response: any) => {
+        console.log(response);
+        response.forEach((obj: any) => {
+          words.push(obj.word);
+        });
+        setKeywords(words);
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
   };
 
-
-  const reset =()=>{
-    setReadOnly(false)
-    setText("")
-    setKeywords([])
-  }
+  const reset = () => {
+    setReadOnly(false);
+    setText("");
+    setKeywords([]);
+  };
 
   return (
     <div style={{ width: "600px", height: "500px", padding: "20px" }}>
@@ -64,9 +63,10 @@ export function FormText() {
         )}
       </div>
       <div>
-        {keywords && keywords.map((word)=>{
-            return <Keyword text={word} />
-        })}
+        {keywords &&
+          keywords.map((word) => {
+            return <Keyword text={word} />;
+          })}
       </div>
     </div>
   );

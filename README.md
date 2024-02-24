@@ -17,20 +17,20 @@ This is a frontend application developed using Next.js, TypeScript, and Ant Desi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/ML-frontend-app.git
+   git clone https://github.com/2bdulra7manRea/voice-text-insight-AI-frontend
    ```
 
 2. Install dependencies:
 
    ```bash
-   cd your-frontend-app
+   cd voice-text-insight-AI-frontend
    npm install
    ```
 
 3. Create a `.env.local` file at the root of your project and add the required environment variables:
 
    ```env
-   NEXT_PUBLIC_HUGGINGFACE_API_KEY=your_huggingface_api_key
+   REACT_APP_HUGGING_FACE_API_KEY=your_huggingface_api_key
    ```
 
    Replace `your_huggingface_api_key` with your actual Hugging Face API key.

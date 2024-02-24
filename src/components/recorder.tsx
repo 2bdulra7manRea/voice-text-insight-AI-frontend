@@ -12,15 +12,13 @@ export const AudioRecorder = ({
   const [audioUrl, setAudioUrl] = useState("");
   const [start, setStart] = useState(false);
   const [getBlob, setBlob] = useState<any>();
-  const [loading , setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-
-  const resetInputs= ()=>{
-    setBlob("")
-    setAudioUrl("")
-    displayText("")
-  }
-
+  const resetInputs = () => {
+    setBlob("");
+    setAudioUrl("");
+    displayText("");
+  };
 
   useEffect(() => {
     const handleOnStart = async () => {
@@ -60,7 +58,7 @@ export const AudioRecorder = ({
   }, []);
 
   const submit = () => {
-    setLoading(true)
+    setLoading(true);
 
     const file = new File([getBlob], "audio.wav");
     sendRecordToModel(file)
@@ -69,10 +67,13 @@ export const AudioRecorder = ({
           displayText(response.text);
         }
       })
-      .catch((error) => {}).finally(()=>{setLoading(false)});
+      .catch((error) => {})
+      .finally(() => {
+        setLoading(false);
+      });
   };
   const starting = () => {
-    resetInputs()
+    resetInputs();
     mediaRecorder.start();
     setStart(true);
   };
@@ -103,8 +104,8 @@ export const AudioRecorder = ({
         </>
       )}
       {audioUrl && <audio controls src={audioUrl} />}
-      <div className="flex justify-center p-5" >
-      {  <Spin spinning={loading} />}
+      <div className="flex justify-center p-5">
+        {<Spin spinning={loading} />}
       </div>
     </div>
   );

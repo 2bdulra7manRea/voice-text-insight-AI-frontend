@@ -21,12 +21,14 @@ export function Background() {
             backdropFilter: "blur(20px)",
           }}
         >
-        <div style={{width:"100%" , height:"100%"}} className="flex items-center justify-center">
-            <FormText/>
-            <FormVoice/>
+          <div
+            style={{ width: "100%", height: "100%" }}
+            className="flex items-center justify-center"
+          >
+            <FormText />
+            <FormVoice />
+          </div>
         </div>
-        </div>
-
       </div>
     </>
   );
