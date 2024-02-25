@@ -24,6 +24,14 @@ export function HeaderKL() {
             Text Extractor
           </Link>
         </li>
+        <li className="border p-2">
+          <Link
+            href={"/image-to-text"}
+            className={`link ${path === "/image-to-text" ? "line-through" : ""}`}
+          >
+            Image To Text
+          </Link>
+        </li>
       </ul>
 
     </div>
