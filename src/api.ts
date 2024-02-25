@@ -1,4 +1,4 @@
-const apiKey = process.env.REACT_APP_HUGGING_FACE_API_KEY;
+const apiKey = process.env.NEXT_PUBLIC_HUGGING_FACE_API_KEY;
 const modelEndpoint =
   "https://api-inference.huggingface.co/models/yanekyuk/bert-keyword-extractor";
 

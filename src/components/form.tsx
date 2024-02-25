@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "antd";
+import { Button, Spin } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
 import { Keyword } from "./keyword";
@@ -10,19 +10,25 @@ export function FormText() {
   const [text, setText] = useState<any>("");
   const [keywords, setKeywords] = useState<any[]>([]);
   const [readonly, setReadOnly] = useState(false);
+  const [loading , setLoading] = useState(false)
   const handleOnChangeText = async () => {
     setReadOnly(true);
+    setLoading(true)
     const words: any[] = [];
     sendInputToModel(text)
       .then((response: any) => {
         console.log(response);
+        if(Array.isArray(response)){
         response.forEach((obj: any) => {
           words.push(obj.word);
         });
         setKeywords(words);
+      }
       })
       .catch((error: any) => {
         console.log(error);
+      }).finally(()=>{
+        setLoading(false)
       });
   };
 
@@ -43,7 +49,7 @@ export function FormText() {
         maxLength={1000}
         style={{
           resize: "none",
-          backgroundColor: "rgb(49, 49, 49)",
+          backgroundColor: "rgba(80, 6, 58, 0.76)",
           outline: "none",
           color: "white",
           fontSize: "20px",
@@ -63,6 +69,9 @@ export function FormText() {
         )}
       </div>
       <div>
+      <div className="flex justify-center p-5">
+        {<Spin spinning={loading} />}
+      </div>
         {keywords &&
           keywords.map((word) => {
             return <Keyword text={word} />;
