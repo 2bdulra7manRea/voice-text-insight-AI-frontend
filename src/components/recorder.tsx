@@ -12,6 +12,7 @@ export const AudioRecorder = ({
   const [audioUrl, setAudioUrl] = useState("");
   const [start, setStart] = useState(false);
   const [getBlob, setBlob] = useState<any>();
+  const [getMedia, setMedia] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
   const resetInputs = () => {
@@ -20,13 +21,22 @@ export const AudioRecorder = ({
     displayText("");
   };
 
+  const closeMedia = (stream: MediaStream) => {
+    console.log("onDistory", stream);
+    if (stream) {
+      console.log("steam");
+      stream.getTracks().forEach((track) => track.stop());
+    }
+  };
+
   useEffect(() => {
     const handleOnStart = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           audio: true,
         });
-
+        console.log(stream);
+        setMedia(stream);
         const recorder = new MediaRecorder(stream);
         let recordedChunksK: any[] = [];
 
@@ -56,6 +66,12 @@ export const AudioRecorder = ({
 
     handleOnStart();
   }, []);
+
+  useEffect(() => {
+    return () => {
+      closeMedia(getMedia);
+    };
+  }, [getMedia]);
 
   const submit = () => {
     setLoading(true);

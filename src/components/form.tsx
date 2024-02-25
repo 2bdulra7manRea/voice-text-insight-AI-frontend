@@ -39,7 +39,7 @@ export function FormText() {
   };
 
   return (
-    <div style={{ width: "600px", height: "500px", padding: "20px" }}>
+    <div>
       <TextArea
         rows={10}
         readOnly={readonly}
@@ -49,8 +49,9 @@ export function FormText() {
         maxLength={1000}
         style={{
           resize: "none",
-          backgroundColor: "rgba(80, 6, 58, 0.76)",
+          backgroundColor: "rgba(11, 11, 83, 0.438)",
           outline: "none",
+          border:"none",
           color: "white",
           fontSize: "20px",
           fontStyle: "italic",
