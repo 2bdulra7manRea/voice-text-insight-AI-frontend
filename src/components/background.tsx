@@ -11,7 +11,7 @@ export function Background({children}:{children:any}) {
       <div
         style={{
           width: "100%",
-          height: "100vh",
+          height: "90vh",
           backgroundImage: url,
         }}
       >
@@ -25,7 +25,6 @@ export function Background({children}:{children:any}) {
         >
           <div
             style={{ width: "100%", height: "100%" }}
-            className="flex items-center justify-center"
           >
             {children}
           </div>

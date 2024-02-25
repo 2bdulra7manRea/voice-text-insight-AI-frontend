@@ -18,14 +18,6 @@ export function FormVoice() {
     setRecorded(false);
   };
 
-  const startRecord = () => {
-    setRecorded(true);
-  };
-
-  const reset = () => {
-    setText("");
-  };
-
   return (
     <div style={{ width: "600px", height: "500px", padding: "20px" }}>
       <div className="flex justify-center">

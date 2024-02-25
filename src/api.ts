@@ -1,8 +1,9 @@
 const apiKey = process.env.NEXT_PUBLIC_HUGGING_FACE_API_KEY;
-const modelEndpoint =
-  "https://api-inference.huggingface.co/models/yanekyuk/bert-keyword-extractor";
 
 export async function sendInputToModel(text: string) {
+  const modelEndpoint =
+    "https://api-inference.huggingface.co/models/yanekyuk/bert-keyword-extractor";
+
   const inputData = {
     inputs: text,
   };
@@ -26,6 +27,19 @@ export async function sendRecordToModel(data: any) {
       headers: { Authorization: `Bearer ${apiKey}` },
       method: "POST",
       body: data,
+    }
+  );
+  const result = await response.json();
+  return result;
+}
+
+export async function sendImageToModel(file: any) {
+  const response = await fetch(
+    "https://api-inference.huggingface.co/models/microsoft/trocr-base-handwritten",
+    {
+      headers: { Authorization: `Bearer ${apiKey}` },
+      method: "POST",
+      body: file,
     }
   );
   const result = await response.json();
